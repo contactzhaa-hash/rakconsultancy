@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BriefcaseBusiness, CircleCheck, ShieldCheck, Lock, MapPin, Coins, Home as HomeIcon } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, CircleCheck, Lock, MapPin, Coins } from "lucide-react";
 import Link from "next/link";
 import EnrollModal from "@/components/EnrollModal";
 import { jobs, processSteps } from "@/lib/site-data";
@@ -56,40 +56,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IMMEDIATE LIVE JOB SPOTLIGHT - Solves the exact user intent */}
-      <section className="bg-[#f1eadf] py-10 border-b border-slate/30">
+      {/* SPECIALIZED HEALTHCARE & MOH VACANCIES DESK (Placed immediately below hero) */}
+      <section className="bg-white py-16 lg:py-20 border-b border-slate/30">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#8b6a37]">Current Batch Openings</span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy mt-1">Featured Active Placements</h2>
-            </div>
-            <Link href="/openings" className="text-xs font-bold uppercase tracking-wider text-navy hover:text-[#8b6a37] flex items-center gap-1">
-              View all active batches →
-            </Link>
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#8b6a37]">Specialized Healthcare Recruitment</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-navy mt-2">Specialized Healthcare & Ministry of Health (MOH) Vacancies[cite: 9]</h2>
+            <p className="text-sm text-slate mt-3 leading-relaxed">
+              For registered nurses and healthcare specialists ready to care for patients across the Gulf, our specialist desk supports the full licensing journey with patience and clarity[cite: 9].
+            </p>
           </div>
-          
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {jobs.slice(0, 3).map((job) => (
-              <div key={job.title} className="bg-white border border-slate/20 p-5 rounded shadow-sm hover:shadow-md transition">
-                <div className="flex justify-between items-start">
-                  <span className="bg-navy text-white text-[0.65rem] font-bold px-2 py-0.5 rounded uppercase tracking-wider">{job.category}</span>
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Active Recruiting</span>
-                </div>
-                <h3 className="text-lg font-bold text-navy mt-3">{job.title}</h3>
-                <p className="text-xs text-slate flex items-center gap-1 mt-1"><MapPin size={13} /> {job.location}</p>
-                
-                <div className="mt-4 pt-3 border-t border-slate/20 flex items-center justify-between text-xs font-semibold">
-                  <span className="text-navy flex items-center gap-1"><Coins size={14} className="text-[#8b6a37]" /> {job.salary}</span>
-                  <Link href="/openings" className="text-[#8b6a37] font-bold hover:underline">Apply Now →</Link>
-                </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
+              <h3 className="text-lg font-bold text-navy">Saudi Arabia · MOH[cite: 9]</h3>
+              <p className="text-xs text-slate mt-2 leading-relaxed">
+                Registered Nurses and specialists for Ministry of Health facilities, with Dataflow and MOH licensing guidance[cite: 9].
+              </p>
+              <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
+                <p>• Tax-free salary[cite: 9]</p>
+                <p>• Free furnished accommodation[cite: 9]</p>
               </div>
-            ))}
+            </div>
+
+            <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
+              <h3 className="text-lg font-bold text-navy">UAE · DHA[cite: 9]</h3>
+              <p className="text-xs text-slate mt-2 leading-relaxed">
+                Healthcare roles in Dubai with support for Dataflow verification and the DHA eligibility pathway[cite: 9].
+              </p>
+              <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
+                <p>• Tax-free salary[cite: 9]</p>
+                <p>• Free furnished accommodation[cite: 9]</p>
+              </div>
+            </div>
+
+            <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
+              <h3 className="text-lg font-bold text-navy">Qatar · MoPH[cite: 9]</h3>
+              <p className="text-xs text-slate mt-2 leading-relaxed">
+                Nursing and specialist vacancies with guidance through document verification and the MoPH licensing process[cite: 9].
+              </p>
+              <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
+                <p>• Tax-free salary[cite: 9]</p>
+                <p>• Free furnished accommodation[cite: 9]</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between bg-[#f1eadf] p-4 sm:p-6 rounded gap-4">
+            <p className="text-xs text-slate leading-relaxed max-w-3xl">
+              <strong>A note from our healthcare desk:</strong> licensing timelines depend on your qualification, experience and document history. We will tell you what is needed before you commit[cite: 9].
+            </p>
+            <EnrollModal triggerClassName="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-xs font-bold text-white hover:bg-navy/90" />
           </div>
         </div>
       </section>
 
-      <section className="border-b border-slate bg-white">
+      <section className="border-b border-slate bg-[#f8f7f4]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
           {stats.map(([value, label]) => (
             <div key={label} className="border-r border-slate px-5 py-7 last:border-0 sm:px-8">
