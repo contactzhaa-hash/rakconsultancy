@@ -1,14 +1,53 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ArrowRight, BriefcaseBusiness, CircleCheck, Lock, MapPin, Coins } from "lucide-react";
 import Link from "next/link";
 import EnrollModal from "@/components/EnrollModal";
 import { jobs, processSteps } from "@/lib/site-data";
 import { useLanguage } from "@/components/LanguageProvider";
 
+// Animated counter component for stats
+function Counter({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 1800; // 1.8 seconds animation
+    const stepTime = 30;
+    const steps = duration / stepTime;
+    const increment = value / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [value]);
+
+  return (
+    <span>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 export default function Home() {
   const { t } = useLanguage();
-  const stats = [["12+", t("statsExperience")], ["15,000+", t("statsPlacements")], ["100%", t("statsLegal")], ["50+", t("statsEmployers")]];
+  
+  // Stats data mapped with numerical values for smooth animation
+  const statsData = [
+    { num: 12, suffix: "+", label: t("statsExperience") },
+    { num: 15000, suffix: "+", label: t("statsPlacements") },
+    { num: 100, suffix: "%", label: t("statsLegal") },
+    { num: 50, suffix: "+", label: t("statsEmployers") },
+  ];
   
   return (
     <>
@@ -56,67 +95,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SPECIALIZED HEALTHCARE & MOH VACANCIES DESK (Placed immediately below hero) */}
+      {/* SPECIALIZED HEALTHCARE & MOH VACANCIES DESK */}
       <section className="bg-white py-16 lg:py-20 border-b border-slate/30">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-widest text-[#8b6a37]">Specialized Healthcare Recruitment</span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-navy mt-2">Specialized Healthcare & Ministry of Health (MOH) Vacancies[cite: 9]</h2>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-navy mt-2">Specialized Healthcare & Ministry of Health (MOH) Vacancies</h2>
             <p className="text-sm text-slate mt-3 leading-relaxed">
-              For registered nurses and healthcare specialists ready to care for patients across the Gulf, our specialist desk supports the full licensing journey with patience and clarity[cite: 9].
+              For registered nurses and healthcare specialists ready to care for patients across the Gulf, our specialist desk supports the full licensing journey with patience and clarity.
             </p>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
-              <h3 className="text-lg font-bold text-navy">Saudi Arabia · MOH[cite: 9]</h3>
+              <h3 className="text-lg font-bold text-navy">Saudi Arabia · MOH</h3>
               <p className="text-xs text-slate mt-2 leading-relaxed">
-                Registered Nurses and specialists for Ministry of Health facilities, with Dataflow and MOH licensing guidance[cite: 9].
+                Registered Nurses and specialists for Ministry of Health facilities, with Dataflow and MOH licensing guidance.
               </p>
               <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
-                <p>• Tax-free salary[cite: 9]</p>
-                <p>• Free furnished accommodation[cite: 9]</p>
+                <p>• Tax-free salary</p>
+                <p>• Free furnished accommodation</p>
               </div>
             </div>
 
             <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
-              <h3 className="text-lg font-bold text-navy">UAE · DHA[cite: 9]</h3>
+              <h3 className="text-lg font-bold text-navy">UAE · DHA</h3>
               <p className="text-xs text-slate mt-2 leading-relaxed">
-                Healthcare roles in Dubai with support for Dataflow verification and the DHA eligibility pathway[cite: 9].
+                Healthcare roles in Dubai with support for Dataflow verification and the DHA eligibility pathway.
               </p>
               <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
-                <p>• Tax-free salary[cite: 9]</p>
-                <p>• Free furnished accommodation[cite: 9]</p>
+                <p>• Tax-free salary</p>
+                <p>• Free furnished accommodation</p>
               </div>
             </div>
 
             <div className="border border-slate/30 p-6 rounded bg-[#fcfbf9]">
-              <h3 className="text-lg font-bold text-navy">Qatar · MoPH[cite: 9]</h3>
+              <h3 className="text-lg font-bold text-navy">Qatar · MoPH</h3>
               <p className="text-xs text-slate mt-2 leading-relaxed">
-                Nursing and specialist vacancies with guidance through document verification and the MoPH licensing process[cite: 9].
+                Nursing and specialist vacancies with guidance through document verification and the MoPH licensing process.
               </p>
               <div className="mt-6 pt-4 border-t border-slate/20 text-xs font-semibold text-navy space-y-1.5">
-                <p>• Tax-free salary[cite: 9]</p>
-                <p>• Free furnished accommodation[cite: 9]</p>
+                <p>• Tax-free salary</p>
+                <p>• Free furnished accommodation</p>
               </div>
             </div>
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between bg-[#f1eadf] p-4 sm:p-6 rounded gap-4">
             <p className="text-xs text-slate leading-relaxed max-w-3xl">
-              <strong>A note from our healthcare desk:</strong> licensing timelines depend on your qualification, experience and document history. We will tell you what is needed before you commit[cite: 9].
+              <strong>A note from our healthcare desk:</strong> licensing timelines depend on your qualification, experience and document history. We will tell you what is needed before you commit.
             </p>
             <EnrollModal triggerClassName="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-xs font-bold text-white hover:bg-navy/90" />
           </div>
         </div>
       </section>
 
+      {/* DYNAMIC ANIMATED STATS SECTION */}
       <section className="border-b border-slate bg-[#f8f7f4]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
-          {stats.map(([value, label]) => (
-            <div key={label} className="border-r border-slate px-5 py-7 last:border-0 sm:px-8">
-              <p className="display-font text-3xl font-bold text-navy">{value}</p>
-              <p className="mt-2 max-w-[150px] text-xs font-semibold leading-5 text-slate">{label}</p>
+          {statsData.map((item) => (
+            <div key={item.label} className="border-r border-slate px-5 py-7 last:border-0 sm:px-8">
+              <p className="display-font text-3xl font-bold text-navy">
+                <Counter value={item.num} suffix={item.suffix} />
+              </p>
+              <p className="mt-2 max-w-[150px] text-xs font-semibold leading-5 text-slate">{item.label}</p>
             </div>
           ))}
         </div>
