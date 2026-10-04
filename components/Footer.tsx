@@ -1,6 +1,60 @@
-import { Camera, Link2, MapPin, MessageCircle, UsersRound } from "lucide-react";
+"use client";
+
 import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
-  return <footer className="bg-navy text-white"><div className="mx-auto grid max-w-7xl gap-12 px-5 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr] lg:px-8"><div><Link href="/" className="text-xl font-bold">RAK <span className="text-sand">Consultancy</span></Link><p className="mt-5 max-w-xs text-sm leading-6 text-white/70">A recruitment partner for people who want to build a better life through honest, documented work abroad.</p><div className="mt-6 flex gap-3"><a href="#" aria-label="LinkedIn" className="rounded-sm border border-white/30 p-2 text-white/70 hover:text-white"><Link2 size={16} /></a><a href="#" aria-label="Instagram" className="rounded-sm border border-white/30 p-2 text-white/70 hover:text-white"><Camera size={16} /></a><a href="#" aria-label="Facebook" className="rounded-sm border border-white/30 p-2 text-white/70 hover:text-white"><UsersRound size={16} /></a></div></div><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-sand">Explore</p><div className="mt-5 grid gap-3 text-sm text-white/70"><Link href="/about" className="hover:text-white">About RAK</Link><Link href="/openings" className="hover:text-white">Current openings</Link><Link href="/how-we-work" className="hover:text-white">How we work</Link><Link href="/testimonials" className="hover:text-white">Success stories</Link></div></div><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-sand">Candidate desk</p><div className="mt-5 grid gap-3 text-sm text-white/70"><Link href="/safety-guide" className="hover:text-white">Safety & anti-scam</Link><Link href="/contact" className="hover:text-white">Talk to our team</Link><a href="https://wa.me/919999999999" className="flex items-center gap-2 hover:text-white"><MessageCircle size={15} /> WhatsApp support</a></div></div><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-sand">Visit our office</p><p className="mt-5 flex gap-2 text-sm leading-6 text-white/70"><MapPin className="mt-1 shrink-0" size={16} /> 2nd Floor, RAK House,<br />MG Road, Kochi, Kerala<br />India 682016</p><p className="mt-5 text-xs leading-5 text-white/50">Regulatory licensing disclosure: RAK Consultancy operates subject to applicable overseas recruitment laws. Registration / License no. placeholder: RA-2024-XXXX. Verify our active license with the relevant government authority before engaging services.</p></div></div><div className="border-t border-white/20"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-white/50 sm:flex-row sm:justify-between lg:px-8"><span>© 2024 RAK Consultancy. Guiding careers with integrity across the Gulf. All rights reserved.</span><span>Ethical recruitment. Documented journeys.</span></div></div></footer>;
+  return (
+    <footer className="bg-[#06131F] text-white/80 border-t border-white/10">
+      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 grid gap-12 lg:grid-cols-4">
+        <div className="space-y-4 lg:col-span-1">
+          <h3 className="font-serif text-xl font-bold text-white">RAK Consultancy</h3>
+          <p className="text-xs text-white/60 leading-relaxed">
+            Trusted ethical recruitment and secured job placements connecting talent with verified employers across the GCC since 2012.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-sand mb-4">Quick Links</h4>
+          <ul className="space-y-2.5 text-xs">
+            <li><Link href="/about" className="hover:text-sand transition">About Us</Link></li>
+            <li><Link href="/openings" className="hover:text-sand transition">Current Openings</Link></li>
+            <li><Link href="/how-we-work" className="hover:text-sand transition">How We Work</Link></li>
+            <li><Link href="/safety-guide" className="hover:text-sand transition">Safety & Anti-Scam</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-sand mb-4">Support & Legal</h4>
+          <ul className="space-y-2.5 text-xs">
+            <li><Link href="/testimonials" className="hover:text-sand transition">Candidate Testimonials</Link></li>
+            <li><Link href="/contact" className="hover:text-sand transition">Contact Us</Link></li>
+            <li><Link href="/safety-guide" className="hover:text-sand transition">Verification Guarantee</Link></li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-sand mb-4">Contact Information</h4>
+          <ul className="space-y-3 text-xs">
+            <li className="flex items-center gap-2.5">
+              <MapPin size={15} className="text-sand shrink-0" />
+              <span>Riyadh, Saudi Arabia</span>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Phone size={15} className="text-sand shrink-0" />
+              <a href="tel:+966568048793" className="hover:text-sand transition">+966 56 804 8793</a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Mail size={15} className="text-sand shrink-0" />
+              <a href="mailto:rakcareerconsultancy@gmail.com" className="hover:text-sand transition">rakcareerconsultancy@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 py-6 text-center text-xs text-white/50">
+        <p>© {new Date().getFullYear()} RAK Consultancy. All rights reserved. Ethical & Verified GCC Recruitment.</p>
+      </div>
+    </footer>
+  );
 }
